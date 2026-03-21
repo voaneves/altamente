@@ -26,6 +26,22 @@ service cloud.firestore {
     //   - observacoes: string (optional) - Optional observations made by the professor.
     //   - authorUid: string (required) - The UID of the professor who created the record.
     //
+    // Collection: alunos
+    // Document ID: {alunoId}
+    // Fields:
+    //   - nome: string (required) - The name of the student.
+    //   - createdAt: timestamp (required) - The date and time the student was added.
+    //
+    // Collection: notifications
+    // Document ID: {notificationId}
+    // Fields:
+    //   - userId: string (required) - The UID of the user receiving the notification.
+    //   - title: string (required) - Notification title.
+    //   - message: string (required) - Notification message.
+    //   - type: string (required) - Notification type ('info', 'success', 'warning', 'engagement').
+    //   - read: boolean (required) - Whether the notification has been read.
+    //   - createdAt: timestamp (required) - The date and time the notification was created.
+    //
     // ===============================================================
 
     // ===============================================================
@@ -58,8 +74,8 @@ service cloud.firestore {
 
     function isAdmin() {
       return isAuthenticated() &&
-        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
-         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+        ((exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin') ||
          (request.auth.token.email == "victorneves478@gmail.com" && request.auth.token.email_verified == true));
     }
 
@@ -91,7 +107,7 @@ service cloud.firestore {
     }
 
     function isValidRegistro(data) {
-      let allowedKeys = ['dataHora', 'nomeAluno', 'habilidadeAlvo', 'nivelSucesso', 'observacoes', 'authorUid'];
+      let allowedKeys = ['dataHora', 'nomeAluno', 'habilidadeAlvo', 'nivelSucesso', 'observacoes', 'authorUid', 'authorName', 'photoBase64'];
       return request.resource.data.keys().hasOnly(allowedKeys) &&
              hasRequiredFields(['dataHora', 'nomeAluno', 'habilidadeAlvo', 'nivelSucesso', 'authorUid']) &&
              data.dataHora is timestamp &&
@@ -99,7 +115,29 @@ service cloud.firestore {
              data.habilidadeAlvo is string && data.habilidadeAlvo.size() > 0 && data.habilidadeAlvo.size() < 100 &&
              data.nivelSucesso is string && data.nivelSucesso.size() > 0 && data.nivelSucesso.size() < 100 &&
              data.authorUid is string && data.authorUid.size() > 0 && data.authorUid.size() < 100 &&
-             (!('observacoes' in data) || (data.observacoes is string && data.observacoes.size() <= 1000));
+             (!('authorName' in data) || (data.authorName is string && data.authorName.size() <= 100)) &&
+             (!('observacoes' in data) || (data.observacoes is string && data.observacoes.size() <= 1000)) &&
+             (!('photoBase64' in data) || data.photoBase64 == null || (data.photoBase64 is string && data.photoBase64.size() <= 1048576));
+    }
+
+    function isValidAluno(data) {
+      let allowedKeys = ['nome', 'createdAt'];
+      return request.resource.data.keys().hasOnly(allowedKeys) &&
+             hasRequiredFields(['nome', 'createdAt']) &&
+             data.nome is string && data.nome.size() > 0 && data.nome.size() < 100 &&
+             data.createdAt is timestamp;
+    }
+
+    function isValidNotification(data) {
+      let allowedKeys = ['userId', 'title', 'message', 'type', 'read', 'createdAt'];
+      return request.resource.data.keys().hasOnly(allowedKeys) &&
+             hasRequiredFields(['userId', 'title', 'message', 'type', 'read', 'createdAt']) &&
+             data.userId is string && data.userId.size() > 0 && data.userId.size() < 100 &&
+             data.title is string && data.title.size() > 0 && data.title.size() < 200 &&
+             data.message is string && data.message.size() > 0 && data.message.size() < 1000 &&
+             data.type in ['info', 'success', 'warning', 'engagement'] &&
+             data.read is bool &&
+             data.createdAt is timestamp;
     }
 
     // ===============================================================
@@ -107,7 +145,7 @@ service cloud.firestore {
     // ===============================================================
 
     match /users/{userId} {
-      allow read: if isOwner(userId) || isAdmin();
+      allow read: if isOwner(userId) || isAdmin() || (isProfessor() && resource.data.role == 'pai');
       allow create: if isAuthenticated() && isValidUser(request.resource.data) && 
                     ((isOwner(userId) && request.resource.data.role in ['pai', 'professor']) || isAdmin());
       allow update: if isAuthenticated() && isValidUser(request.resource.data) && 
@@ -130,6 +168,24 @@ service cloud.firestore {
                     request.resource.data.authorUid == resource.data.authorUid;
                     
       allow delete: if isAdmin() || (isProfessor() && resource.data.authorUid == request.auth.uid);
+    }
+
+    match /alunos/{alunoId} {
+      allow read: if isAuthenticated();
+      allow create: if isAdmin() && isValidAluno(request.resource.data);
+      allow update: if isAdmin() && isValidAluno(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    match /notifications/{notificationId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() && isValidNotification(request.resource.data);
+      allow update: if isAuthenticated() && 
+                    resource.data.userId == request.auth.uid && 
+                    isValidNotification(request.resource.data) &&
+                    request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read']) &&
+                    request.resource.data.read == true;
+      allow delete: if isAdmin();
     }
   }
 }

@@ -1,0 +1,23 @@
+{
+  "name": "Altamente - Rastreamento Inclusivo",
+  "short_name": "Altamente",
+  "description": "Registre o progresso dos seus alunos de inclusão em segundos.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9F9F8",
+  "theme_color": "#F59E0B",
+  "icons": [
+    {
+      "src": "https://api.dicebear.com/7.x/shapes/svg?seed=Altamente&backgroundColor=F59E0B",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://api.dicebear.com/7.x/shapes/svg?seed=Altamente&backgroundColor=F59E0B",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
