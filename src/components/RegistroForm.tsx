@@ -135,7 +135,7 @@ export const RegistroForm = React.memo(function RegistroForm({ alunosList, appUs
   };
 
   return (
-    <form onSubmit={handleSubmit} className="animate-in fade-in slide-in-from-bottom-4 duration-500 md:bg-app-surface md:p-10 md:rounded-3xl md:border md:border-app-border/60 md:shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+    <form onSubmit={handleSubmit} className="animate-in fade-in slide-in-from-bottom-4 duration-500 md:bg-app-surface md:p-10 md:rounded-2xl md:border md:border-app-border/40 md:shadow-soft-hover">
       <div className="flex flex-col gap-10">
         {/* Aluno */}
         <div className="space-y-5">
@@ -160,10 +160,10 @@ export const RegistroForm = React.memo(function RegistroForm({ alunosList, appUs
                   hapticImpact();
                   setAluno(a.nome);
                 }}
-                className={`p-4 sm:p-5 rounded-2xl border flex flex-col items-center justify-center gap-3 transition-all duration-200 min-h-[120px] ${
+                className={`p-4 sm:p-5 rounded-xl border flex flex-col items-center justify-center gap-3 transition-all duration-300 min-h-[120px] ${
                   aluno === a.nome 
-                    ? 'bg-app-accent/10 border-app-accent text-app-accent shadow-sm scale-[1.02]' 
-                    : 'bg-app-surface md:bg-app-input border-app-border/60 text-app-text-muted hover:bg-app-surface-hover hover:border-app-border hover:shadow-sm'
+                    ? 'bg-app-accent/10 border-app-accent text-app-accent shadow-soft scale-[1.02]' 
+                    : 'bg-app-surface md:bg-app-input border-app-border/40 text-app-text-muted hover:bg-app-surface-hover hover:border-app-border hover:shadow-soft'
                 }`}
               >
                 <div className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 transition-colors ${aluno === a.nome ? 'bg-app-accent text-app-accent-text shadow-md shadow-app-accent/20' : 'bg-app-border/50 text-app-text-muted'}`}>
@@ -189,7 +189,7 @@ export const RegistroForm = React.memo(function RegistroForm({ alunosList, appUs
                   hapticImpact();
                   handleExpressLog('Comunicação Expressiva', 'Independente', 'Comunicou necessidade de forma clara');
                 }}
-                className="shrink-0 bg-app-surface border border-app-border hover:border-app-accent hover:shadow-md hover:shadow-app-accent/10 text-app-text px-5 py-4 rounded-2xl flex flex-col gap-1.5 transition-all duration-200 text-left"
+                className="shrink-0 bg-app-surface border border-app-border hover:border-app-accent hover:shadow-soft hover:shadow-app-accent/10 text-app-text px-5 py-4 rounded-xl flex flex-col gap-1.5 transition-all duration-300 text-left"
               >
                 <span className="font-semibold text-sm">Comunicação Clara</span>
                 <span className="text-xs text-app-text-muted">Expressiva • Independente</span>
@@ -197,7 +197,7 @@ export const RegistroForm = React.memo(function RegistroForm({ alunosList, appUs
               <button
                 type="button"
                 onClick={() => handleExpressLog('Interação Social', 'Independente', 'Boa interação com colegas')}
-                className="shrink-0 bg-app-surface border border-app-border hover:border-app-accent hover:shadow-md hover:shadow-app-accent/10 text-app-text px-5 py-4 rounded-2xl flex flex-col gap-1.5 transition-all duration-200 text-left"
+                className="shrink-0 bg-app-surface border border-app-border hover:border-app-accent hover:shadow-soft hover:shadow-app-accent/10 text-app-text px-5 py-4 rounded-xl flex flex-col gap-1.5 transition-all duration-300 text-left"
               >
                 <span className="font-semibold text-sm">Interação Positiva</span>
                 <span className="text-xs text-app-text-muted">Social • Independente</span>
@@ -205,7 +205,7 @@ export const RegistroForm = React.memo(function RegistroForm({ alunosList, appUs
               <button
                 type="button"
                 onClick={() => handleExpressLog('Foco e Atenção', 'Com ajuda parcial', 'Precisou de suporte visual para focar')}
-                className="shrink-0 bg-app-surface border border-app-border hover:border-app-accent hover:shadow-md hover:shadow-app-accent/10 text-app-text px-5 py-4 rounded-2xl flex flex-col gap-1.5 transition-all duration-200 text-left"
+                className="shrink-0 bg-app-surface border border-app-border hover:border-app-accent hover:shadow-soft hover:shadow-app-accent/10 text-app-text px-5 py-4 rounded-xl flex flex-col gap-1.5 transition-all duration-300 text-left"
               >
                 <span className="font-semibold text-sm">Foco com Apoio</span>
                 <span className="text-xs text-app-text-muted">Atenção • Ajuda parcial</span>
@@ -213,7 +213,7 @@ export const RegistroForm = React.memo(function RegistroForm({ alunosList, appUs
               <button
                 type="button"
                 onClick={() => handleExpressLog('Regulação Emocional', 'Com ajuda total', 'Crise regulada com contenção/ajuda')}
-                className="shrink-0 bg-app-surface border border-app-border hover:border-app-accent hover:shadow-md hover:shadow-app-accent/10 text-app-text px-5 py-4 rounded-2xl flex flex-col gap-1.5 transition-all duration-200 text-left"
+                className="shrink-0 bg-app-surface border border-app-border hover:border-app-accent hover:shadow-soft hover:shadow-app-accent/10 text-app-text px-5 py-4 rounded-xl flex flex-col gap-1.5 transition-all duration-300 text-left"
               >
                 <span className="font-semibold text-sm">Regulação (Crise)</span>
                 <span className="text-xs text-app-text-muted">Emocional • Ajuda total</span>
@@ -234,10 +234,10 @@ export const RegistroForm = React.memo(function RegistroForm({ alunosList, appUs
                   hapticImpact();
                   setHabilidade(h);
                 }}
-                className={`p-4 sm:p-5 rounded-2xl border flex flex-col items-center justify-center gap-3 transition-all duration-200 min-h-[120px] ${
+                className={`p-4 sm:p-5 rounded-xl border flex flex-col items-center justify-center gap-3 transition-all duration-300 min-h-[120px] ${
                   habilidade === h 
-                    ? 'bg-app-accent/10 border-app-accent text-app-accent shadow-sm scale-[1.02]' 
-                    : 'bg-app-surface md:bg-app-input border-app-border/60 text-app-text-muted hover:bg-app-surface-hover hover:border-app-border hover:shadow-sm'
+                    ? 'bg-app-accent/10 border-app-accent text-app-accent shadow-soft scale-[1.02]' 
+                    : 'bg-app-surface md:bg-app-input border-app-border/40 text-app-text-muted hover:bg-app-surface-hover hover:border-app-border hover:shadow-soft'
                 }`}
               >
                 <div className={`transition-colors ${habilidade === h ? 'text-app-accent' : 'text-app-text-muted'}`}>
@@ -261,10 +261,10 @@ export const RegistroForm = React.memo(function RegistroForm({ alunosList, appUs
                   hapticImpact();
                   setNivel(n);
                 }}
-                className={`p-5 sm:p-6 rounded-2xl border flex flex-col items-center justify-center gap-3 transition-all duration-200 min-h-[130px] ${
+                className={`p-5 sm:p-6 rounded-xl border flex flex-col items-center justify-center gap-3 transition-all duration-300 min-h-[130px] ${
                   nivel === n 
-                    ? 'bg-app-accent text-app-accent-text border-app-accent shadow-md shadow-app-accent/20 scale-[1.02]' 
-                    : 'bg-app-surface md:bg-app-input border-app-border/60 text-app-text-muted hover:bg-app-surface-hover hover:border-app-border hover:shadow-sm'
+                    ? 'bg-app-accent text-app-accent-text border-app-accent shadow-soft shadow-app-accent/20 scale-[1.02]' 
+                    : 'bg-app-surface md:bg-app-input border-app-border/40 text-app-text-muted hover:bg-app-surface-hover hover:border-app-border hover:shadow-soft'
                 }`}
               >
                 <div className={`transition-colors ${nivel === n ? 'text-app-accent-text' : 'text-app-text-muted'}`}>
@@ -324,7 +324,7 @@ export const RegistroForm = React.memo(function RegistroForm({ alunosList, appUs
         <button
           type="submit"
           disabled={!aluno || !habilidade || !nivel}
-          className="w-full bg-app-accent hover:bg-app-accent-hover text-app-accent-text font-bold py-5 rounded-2xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg active:scale-[0.98] text-lg mt-4 flex items-center justify-center gap-2"
+          className="w-full bg-app-accent hover:bg-app-accent-hover text-app-accent-text font-bold py-5 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-soft hover:shadow-soft-hover active:scale-[0.98] text-lg mt-4 flex items-center justify-center gap-2"
         >
           Salvar Registro
         </button>

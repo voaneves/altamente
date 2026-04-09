@@ -20,13 +20,13 @@ export const HistoricoProfessor = React.memo(function HistoricoProfessor({ aluno
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       {/* Filtros */}
-      <div className="bg-app-surface p-5 sm:p-6 rounded-3xl border border-app-border/60 flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center shadow-sm">
+      <div className="bg-app-surface p-5 sm:p-6 rounded-2xl border border-app-border/40 flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center shadow-soft-hover">
         <span className="text-[10px] font-bold text-app-text-muted uppercase tracking-widest whitespace-nowrap">Filtrar por Aluno:</span>
         <HorizontalScrollContainer className="flex gap-2 w-full pb-2 sm:pb-0 -mx-2 px-2 sm:mx-0 sm:px-0">
           <button
             onClick={() => setFiltroAlunoProf('')}
             className={`px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300 select-none ${
-              filtroAlunoProf === '' ? 'bg-app-accent text-app-accent-text shadow-md shadow-app-accent/20 scale-105' : 'bg-app-input text-app-text-muted hover:text-app-text hover:bg-app-border/40'
+              filtroAlunoProf === '' ? 'bg-app-accent text-app-accent-text shadow-soft shadow-app-accent/20 scale-105' : 'bg-app-input text-app-text-muted hover:text-app-text hover:bg-app-border/40'
             }`}
           >
             Todos
@@ -36,7 +36,7 @@ export const HistoricoProfessor = React.memo(function HistoricoProfessor({ aluno
               key={a.id}
               onClick={() => setFiltroAlunoProf(a.nome)}
               className={`px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300 select-none ${
-                filtroAlunoProf === a.nome ? 'bg-app-accent text-app-accent-text shadow-md shadow-app-accent/20 scale-105' : 'bg-app-input text-app-text-muted hover:text-app-text hover:bg-app-border/40'
+                filtroAlunoProf === a.nome ? 'bg-app-accent text-app-accent-text shadow-soft shadow-app-accent/20 scale-105' : 'bg-app-input text-app-text-muted hover:text-app-text hover:bg-app-border/40'
               }`}
             >
               {a.nome}

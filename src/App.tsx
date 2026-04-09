@@ -367,8 +367,8 @@ function MainApp() {
         <div className="absolute -top-32 -right-32 w-96 h-96 bg-app-accent/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
         
-        <div className="bg-app-surface p-8 sm:p-10 rounded-[2rem] border border-app-border/60 shadow-2xl max-w-md w-full text-center relative z-10">
-          <div className="w-20 h-20 bg-gradient-to-br from-app-accent to-app-accent/80 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-app-accent/20 rotate-3">
+        <div className="bg-app-surface p-8 sm:p-10 rounded-2xl border border-app-border/40 shadow-soft-hover max-w-md w-full text-center relative z-10">
+          <div className="w-20 h-20 bg-gradient-to-br from-app-accent to-app-accent/80 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-soft shadow-app-accent/20">
             <Zap size={40} className="text-app-accent-text drop-shadow-sm" fill="currentColor" />
           </div>
           <h1 className="text-4xl font-black text-app-text tracking-tight mb-2">
@@ -376,8 +376,8 @@ function MainApp() {
           </h1>
           <p className="text-[10px] text-app-text-muted font-bold uppercase tracking-widest mb-8">Rastreamento Inclusivo</p>
           
-          <div className="bg-app-input/50 border border-app-border/60 rounded-2xl p-5 mb-8 text-left flex items-start gap-4 shadow-sm">
-            <div className="bg-app-surface border border-app-border/60 text-app-accent p-3 rounded-xl shrink-0 shadow-sm">
+          <div className="bg-app-input/50 border border-app-border/40 rounded-xl p-5 mb-8 text-left flex items-start gap-4 shadow-inner-soft">
+            <div className="bg-app-surface border border-app-border/40 text-app-accent p-3 rounded-xl shrink-0 shadow-soft">
               <ClipboardList size={24} />
             </div>
             <div>
@@ -390,7 +390,7 @@ function MainApp() {
           
           <button 
             onClick={handleLogin}
-            className="w-full bg-app-text text-app-bg font-bold text-lg p-4 rounded-2xl hover:bg-app-text/90 transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-3 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+            className="w-full bg-app-text text-app-bg font-bold text-lg p-4 rounded-xl hover:bg-app-text/90 transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-3 shadow-soft hover:shadow-soft-hover hover:-translate-y-0.5"
           >
             <LogIn size={20} />
             Entrar com Google
@@ -413,7 +413,7 @@ function MainApp() {
       <div className="min-h-screen bg-app-bg flex items-center justify-center p-4 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-app-accent/5 to-transparent pointer-events-none"></div>
         
-        <div className="bg-app-surface p-8 sm:p-10 rounded-[2rem] border border-app-border/60 shadow-2xl max-w-md w-full relative z-10">
+        <div className="bg-app-surface p-8 sm:p-10 rounded-2xl border border-app-border/40 shadow-soft-hover max-w-md w-full relative z-10">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-black text-app-text tracking-tight mb-2">Complete seu Perfil</h2>
             <p className="text-sm text-app-text-muted font-medium">Como você vai usar o Altamente?</p>
@@ -426,7 +426,7 @@ function MainApp() {
                 <button
                   type="button"
                   onClick={() => setTempRole('professor')}
-                  className={`py-4 px-2 flex items-center justify-center rounded-2xl border text-center font-bold transition-all duration-300 text-sm ${
+                  className={`py-4 px-2 flex items-center justify-center rounded-xl border text-center font-bold transition-all duration-300 text-sm ${
                     tempRole === 'professor' ? 'bg-app-accent text-app-accent-text border-app-accent shadow-md shadow-app-accent/20 scale-105' : 'bg-app-input border-transparent text-app-text-muted hover:bg-app-border/40 hover:text-app-text'
                   }`}
                 >
@@ -435,7 +435,7 @@ function MainApp() {
                 <button
                   type="button"
                   onClick={() => setTempRole('pai')}
-                  className={`py-4 px-2 flex items-center justify-center rounded-2xl border text-center font-bold transition-all duration-300 text-sm ${
+                  className={`py-4 px-2 flex items-center justify-center rounded-xl border text-center font-bold transition-all duration-300 text-sm ${
                     tempRole === 'pai' ? 'bg-app-accent text-app-accent-text border-app-accent shadow-md shadow-app-accent/20 scale-105' : 'bg-app-input border-transparent text-app-text-muted hover:bg-app-border/40 hover:text-app-text'
                   }`}
                 >
@@ -450,7 +450,7 @@ function MainApp() {
                     }
                     setTempRole('admin');
                   }}
-                  className={`py-4 px-2 flex items-center justify-center rounded-2xl border text-center font-bold transition-all duration-300 text-sm ${
+                  className={`py-4 px-2 flex items-center justify-center rounded-xl border text-center font-bold transition-all duration-300 text-sm ${
                     tempRole === 'admin' ? 'bg-app-accent text-app-accent-text border-app-accent shadow-md shadow-app-accent/20 scale-105' : 'bg-app-input border-transparent text-app-text-muted hover:bg-app-border/40 hover:text-app-text'
                   } ${(user.isAnonymous || user.email !== 'victorneves478@gmail.com') ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
@@ -466,7 +466,7 @@ function MainApp() {
                   <select 
                     value={tempFilho}
                     onChange={(e) => setTempFilho(e.target.value)}
-                    className="w-full bg-app-input border border-app-border/60 rounded-2xl p-4 text-app-text font-medium focus:border-app-accent focus:ring-2 focus:ring-app-accent/20 transition-all duration-300 appearance-none cursor-pointer"
+                    className="w-full bg-app-input border border-app-border/60 rounded-xl p-4 text-app-text font-medium focus:border-app-accent focus:ring-2 focus:ring-app-accent/20 transition-all duration-300 appearance-none cursor-pointer"
                     style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: `right 1rem center`, backgroundRepeat: `no-repeat`, backgroundSize: `1.5em 1.5em`, paddingRight: `3rem` }}
                   >
                     <option value="" disabled>Selecione o aluno...</option>
@@ -480,7 +480,7 @@ function MainApp() {
 
             <button 
               type="submit"
-              className="w-full bg-app-accent text-app-accent-text font-bold text-lg p-4 rounded-2xl hover:bg-app-accent-hover transition-all duration-300 active:scale-[0.98] shadow-md shadow-app-accent/20 hover:shadow-lg hover:-translate-y-0.5"
+              className="w-full bg-app-accent text-app-accent-text font-bold text-lg p-4 rounded-xl hover:bg-app-accent-hover transition-all duration-300 active:scale-[0.98] shadow-soft shadow-app-accent/20 hover:shadow-soft-hover hover:-translate-y-0.5"
             >
               Concluir Cadastro
             </button>
@@ -539,7 +539,7 @@ function MainApp() {
                 
                 <button 
                   onClick={() => setShowNotifications(true)}
-                  className="w-12 h-12 rounded-full bg-app-surface border border-app-border/60 flex items-center justify-center text-app-text-muted hover:text-app-accent hover:bg-app-accent/10 transition-all duration-300 relative shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                  className="w-12 h-12 rounded-full bg-app-surface border border-app-border/40 flex items-center justify-center text-app-text-muted hover:text-app-accent hover:bg-app-accent/10 transition-all duration-300 relative shadow-soft hover:shadow-soft-hover hover:-translate-y-0.5"
                 >
                   <Bell size={22} />
                   {notifications.some(n => !n.read) && (
@@ -552,8 +552,8 @@ function MainApp() {
             {activeTab === 'registrar' && appUser.role === 'professor' && (
               <>
                 {alunosList.length === 0 ? (
-                  <div className="bg-app-surface p-8 rounded-3xl border border-app-border text-center animate-in fade-in slide-in-from-bottom-4 shadow-lg max-w-2xl mx-auto mt-8">
-                    <div className="w-20 h-20 bg-app-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="bg-app-surface p-8 rounded-2xl border border-app-border/40 text-center animate-in fade-in slide-in-from-bottom-4 shadow-soft-hover max-w-2xl mx-auto mt-8">
+                    <div className="w-20 h-20 bg-app-accent/10 rounded-xl flex items-center justify-center mx-auto mb-6">
                       <Users size={40} className="text-app-accent" />
                     </div>
                     <h3 className="text-2xl font-bold text-app-text mb-3">Nenhum aluno cadastrado</h3>
