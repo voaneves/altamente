@@ -1,0 +1,46 @@
+{
+  "repo": "altamente",
+  "branch": "main",
+  "lang": "pt-BR",
+  "license": "MIT",
+  "name": "Altamente",
+  "tagline": "Acompanha o desenvolvimento de crianças e conecta terapeutas, educadores e famílias.",
+  "description": "Aplicativo de rastreamento de habilidades para educação inclusiva, conectando profissionais e famílias.",
+  "logo": {
+    "existing": "public/logo.svg"
+  },
+  "buttons": [
+    {
+      "id": "live",
+      "text": "Abrir o app",
+      "kind": "primary",
+      "font": "sans",
+      "href": "https://voaneves.github.io/altamente/"
+    },
+    {
+      "id": "run",
+      "text": "Rodar localmente",
+      "kind": "secondary",
+      "font": "sans",
+      "href": "https://github.com/voaneves/altamente#como-rodar"
+    },
+    {
+      "id": "hire",
+      "text": "Vamos conversar",
+      "kind": "primary",
+      "font": "sans",
+      "href": "https://voaneves.com/#contato",
+      "landing": false
+    },
+    {
+      "id": "site",
+      "text": "voaneves.com",
+      "kind": "secondary",
+      "font": "sans",
+      "href": "https://voaneves.com/",
+      "landing": false
+    }
+  ],
+  "landing": false,
+  "live_url": "https://voaneves.github.io/altamente/"
+}
