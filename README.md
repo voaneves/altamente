@@ -2,7 +2,11 @@
 
 <div align="center">
 
-<img alt="Logotipo Altamente" src="https://raw.githubusercontent.com/voaneves/altamente/main/public/logo.svg" width="260" height="75" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/altamente/main/assets/logo/logo-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/voaneves/altamente/main/assets/logo/logo-light.svg" />
+  <img alt="Logo do Altamente: degraus ascendentes, com um ponto vermelho para o marco" src="https://raw.githubusercontent.com/voaneves/altamente/main/assets/logo/logo-light.svg" width="112" height="112" />
+</picture>
 
 <h1>Altamente</h1>
 

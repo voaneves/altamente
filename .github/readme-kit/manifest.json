@@ -7,6 +7,7 @@
   "tagline": "Acompanha o desenvolvimento de crianças e conecta terapeutas, educadores e famílias.",
   "description": "Aplicativo de rastreamento de habilidades para educação inclusiva, conectando profissionais e famílias.",
   "logo": {
+    "glyph": "steps",
     "existing": "public/logo.svg"
   },
   "buttons": [
