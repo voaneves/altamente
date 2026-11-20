@@ -137,7 +137,7 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado!
 
 ## Licença
 
-Distribuído sob a Licença MIT. Veja `LICENSE.txt` para mais informações.
+Distribuído sob a Licença MIT. Veja `LICENSE` para mais informações.
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
@@ -172,7 +172,7 @@ Gostaria de agradecer às seguintes ferramentas e comunidades que tornaram este 
 [issues-shield]: https://img.shields.io/github/issues/voaneves/altamente.svg?style=for-the-badge
 [issues-url]: https://github.com/voaneves/altamente/issues
 [license-shield]: https://img.shields.io/github/license/voaneves/altamente.svg?style=for-the-badge
-[license-url]: https://github.com/voaneves/altamente/blob/main/LICENSE.txt
+[license-url]: https://github.com/voaneves/altamente/blob/main/LICENSE
 
 [React-shield]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
